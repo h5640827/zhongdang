@@ -55,23 +55,23 @@
     <div class="container" style="margin-top: 20px;">
       <div class="row justify-content-around">
         
-        <div id="qr_div" class="col-xs-12 col-md-2">
+        <div class="qr-div col-xs-12 col-md-2">
           <img src="@/assets/img/qr/company.png" alt="二维码">
           <p>企业微信</p>
         </div>
-        <div id="qr_div" class="col-xs-12 col-md-2">
+        <div class="qr-div col-xs-12 col-md-2">
           <img src="@/assets/img/qr/xiaohongshu.png" alt="二维码">
           <p>小红书</p>
         </div>
-        <div id="qr_div" class="col-xs-12 col-md-2">
+        <div class="qr-div col-xs-12 col-md-2">
           <img src="@/assets/img/qr/douyin.png" alt="二维码">
           <p>抖音</p>
         </div>
-        <div id="qr_div" class="col-xs-12 col-md-2">
+        <div class="qr-div col-xs-12 col-md-2">
           <img src="@/assets/img/qr/mp.png" alt="二维码">
           <p>公众号</p>
         </div>
-        <div id="qr_div" class="col-xs-12 col-md-2">
+        <div class="qr-div col-xs-12 col-md-2">
           <img src="@/assets/img/qr/mp.png" alt="二维码">
           <p>视频号</p>
         </div>
@@ -106,68 +106,95 @@ export default {
   width: 100%;
   height: 100%;
   color: #fff;
-  background: #474747;
+  padding: 34px 0 24px;
+  background: linear-gradient(135deg, #081b31 0%, #0f3561 58%, #0c5d9c 100%);
 }
 .logo {
   width: 330px;
   height: auto;
-  margin: 2px auto 10px;
+  margin: 0 auto 24px;
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 .logo img {
-  margin: 10px;
-  width: 220px;
+  margin: 0;
+  width: 230px;
   height: auto;
 }
 
-#qr_div {
-  /* display: table-cell; */
-    width: 150px;
-    height: auto;
-    margin-left: 30px;
-    margin-right: 30px;
-    position: relative;
+.qr-div {
+  width: 150px;
+  height: auto;
+  margin: 0 22px 18px;
+  position: relative;
+  text-align: center;
 }
 
-#qr_div img {
-    width: 150px;
-    height: 150px;
-    /* vertical-align: middle   */
+.qr-div img {
+  width: 136px;
+  height: 136px;
+  padding: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.16);
 }
-#qr_div p {
-    position: absolute;
-    width: 100%;
-    bottom: 3;
-    text-align: center;
+.qr-div p {
+  width: 100%;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  text-align: center;
 }
-/* #description {
-  font-size: 15px;
-} */
+#description {
+  width: 1170px;
+  max-width: calc(100% - 48px);
+  margin: 0 auto;
+  padding: 20px 0 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 .title {
-  font-size: 25px;
-  margin-bottom: 20px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 .address_tel_fax {
-  color: #d3d3d3;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
-  margin: 10px 0;
+  line-height: 1.8;
+  margin: 10px 0 18px;
 }
 .email_wx {
-  color: #d3d3d3;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
 }
 .copy {
-  color: #d3d3d3;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 12px;
-  margin: 30px 0 10px;
+  line-height: 1.8;
+  margin: 26px auto 10px;
+  padding: 0 24px;
+  text-align: center;
+}
+#footer a {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+#footer a:hover {
+  color: #80d8ff !important;
+  text-decoration: none;
 }
 @media screen and (max-width: 997px) {
+  #footer {
+    padding: 28px 0 20px;
+  }
+  #description {
+    max-width: calc(100% - 30px);
+    text-align: center;
+  }
   .title {
-    font-size: 20px;
+    font-size: 18px;
   }
   .address_tel_fax {
     font-size: 12px;
@@ -175,6 +202,18 @@ export default {
   .email_wx {
 
     font-size: 12px;
+  }
+  .qr-div {
+    width: 100%;
+    margin: 0 0 18px;
+  }
+  .qr-div img {
+    width: 118px;
+    height: 118px;
+  }
+  .copy span {
+    display: block;
+    margin-bottom: 4px;
   }
 }
 </style>

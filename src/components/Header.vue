@@ -13,7 +13,7 @@
           <!-- <span class="glyphicon glyphicon-hand-right"></span>赶快联系我们吧！
           <span class="glyphicon glyphicon-hand-left"></span> -->
           <!-- <div class="glyphicon glyphicon-time"> -->
-            <img src="@/assets/img/wechat_search.png" alt="微信公众号搜索" style="height: 40px; margin: 5px 0px;">
+            <img class="wechat-search" src="@/assets/img/wechat_search.png" alt="微信公众号搜索">
           <!-- </div> -->
         </div>
       </div>
@@ -205,160 +205,183 @@ export default {
 };
 </script>
 <style scoped>
-/* 顶部 */
 #header {
-  background: #f4f4f4;
-  transition: all ease 0.6s;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(9, 34, 70, 0.08);
+  position: relative;
+  z-index: 1000;
+  transition: all ease 0.4s;
 }
 #header .header-top {
-  height: 50px;
-  color: #fff;
+  height: 42px;
+  color: rgba(255, 255, 255, 0.86);
   font-size: 12px;
-  line-height: 50px;
-  background: #474747;
+  line-height: 42px;
+  background: linear-gradient(90deg, #0b1f3a 0%, #0f4c91 52%, #1684d8 100%);
 }
-/* 顶部的图标 */
 #header .header-top span {
-  margin: 0 8px;
+  color: #9bd7ff;
+  margin: 0 7px 0 18px;
 }
-/* 导航栏 */
+#header .header-top span:first-child {
+  margin-left: 0;
+}
+#header .header-top .wechat-search {
+  height: 32px;
+  margin: 5px 0;
+  opacity: 0.95;
+}
 #header .header-nav {
-  height: 120px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-/* 导航栏logo */
 #header .header-nav .header-nav-logo {
-  width: 95px;
-  height: 100%;
-  float: left;
+  width: 280px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  float: none;
   position: relative;
 }
-/* 导航栏logo图片 */
 #header .header-nav .header-nav-logo img {
-  width: 110px;
+  width: 92px;
   height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  position: static;
+  margin: 0;
 }
 #header .header-nav .header-nav-logo span {
-  width: 300px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  color: #2ea4f3;
-  font-size: 16pt;
-  margin-left:120px;
-  margin-top:40px;
+  width: auto;
+  position: static;
+  color: #0f65b8;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-left: 16px;
+  white-space: nowrap;
 }
-/* 导航栏 导航容器 */
 #header .header-nav-fixed .header-nav-wrapper {
   line-height: 50px;
 }
 #header .header-nav .header-nav-wrapper {
-  line-height: 110px;
-  float: right;
+  line-height: 1;
+  float: none;
   margin: 0;
-  max-width: 1000px;
+  max-width: 880px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-/* 导航栏 每个导航 */
 #header .header-nav .header-nav-wrapper > li {
-  float: left;
-  margin: 0 15px;
+  float: none;
+  margin: 0 2px;
   position: relative;
 }
-/* 导航栏 每个导航下面的 a 链接 */
 #header .header-nav .header-nav-wrapper > li > a {
-  color: #000;
+  color: #1f2d3d;
+  display: block;
   font-size: 15px;
-  font-weight: bold;
-  padding: 15px 0;
+  font-weight: 600;
+  padding: 15px 10px;
   position: relative;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
-/* 导航栏 每个导航下面的 a 链接的下划线 */
 #header .header-nav .header-nav-wrapper > li > a > i {
   display: block;
   position: absolute;
-  bottom: -2px;
+  bottom: 7px;
   left: 50%;
   width: 0;
-  height: 2px;
+  height: 3px;
   opacity: 0;
-  transition: all 0.6s ease;
-  background-color: #1e73be;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+  background: linear-gradient(90deg, #1e73be, #2ec5ff);
 }
-/* 导航栏 每个导航下面的 a 链接的右侧小三角 */
 #header .header-nav .header-nav-wrapper > li > a > span {
   font-size: 12px;
+  margin-left: 4px;
   transition: transform ease 0.5s;
 }
-/* 导航栏 每个导航下面的 a 链接 鼠标滑上去的样式 */
 #header .header-nav .header-nav-wrapper > li > a:hover {
   color: #1e73be;
+  background: #eef7ff;
   text-decoration: none;
 }
-/* 导航栏 每个导航下面的 a 链接 鼠标滑上去下划线的样式 */
 #header .header-nav .header-nav-wrapper > li > a:hover .underline {
   opacity: 1;
-  width: 100%;
-  left: 0;
+  width: calc(100% - 20px);
+  left: 10px;
 }
-/* 导航栏 每个导航下面的 a 链接 鼠标滑上去三角标的样式 */
 #header .header-nav .header-nav-wrapper > li > a:hover span {
   transform: rotate(180deg);
 }
-/* 导航栏 每个导航下面的 a 链接 鼠标点击后的样式 */
 #header .header-nav .header-nav-wrapper > li.active > a {
   color: #1e73be;
+  background: #eef7ff;
   text-decoration: none;
-  border-bottom: 2px solid #1e73be;
+  border-bottom: 0;
 }
-/* 导航栏 每个导航下面的二级导航容器 */
+#header .header-nav .header-nav-wrapper > li.active > a .underline {
+  opacity: 1;
+  width: calc(100% - 20px);
+  left: 10px;
+}
 #header .header-nav .header-nav-wrapper > li > dl {
   display: none;
   position: absolute;
-  width: 168px;
-  top: 80%;
+  width: 220px;
+  top: 100%;
   left: 0;
   z-index: 999999;
-  box-shadow: 0 0 3px 1px #ccc;
+  padding: 8px;
+  border: 1px solid rgba(30, 115, 190, 0.12);
+  border-radius: 6px;
+  box-shadow: 0 18px 36px rgba(9, 34, 70, 0.16);
   background: #fff;
 }
-/* 导航栏 每个导航下面的二级导航容器的每个导航 */
 #header .header-nav .header-nav-wrapper > li > dl > dt {
   width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  padding: 0;
+  border-bottom: 0;
 }
-/* 导航栏 每个导航下面的二级导航容器的每个导航 当鼠标滑上时的样式*/
+#header .header-nav .header-nav-wrapper > li > dl > dt > a {
+  color: #24364a;
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
 #header .header-nav .header-nav-wrapper > li > dl > dt > a:hover {
+  color: #1e73be;
+  background: #f1f8ff;
   text-decoration: none;
 }
-/* 导航栏 滑上一级导航显示二级导航 */
 #header .header-nav .header-nav-wrapper > li:hover dl {
   display: block;
 }
 #header .header-nav .header-nav-wrapper > li > dl > dt:hover {
   cursor: pointer;
-  background: #ccc;
 }
 @media screen and (max-width: 997px) {
+  #header {
+    box-shadow: 0 8px 22px rgba(9, 34, 70, 0.1);
+  }
   #header .header-nav-m {
     position: relative;
+    background: #fff;
   }
-  /* 导航栏logo容器 */
   #header .header-nav-m .header-nav-m-logo {
-    height: 80px;
+    height: 72px;
     position: relative;
   }
-  /* 导航栏logo图片 */
   #header .header-nav-m .header-nav-m-logo img {
-    width: 95px;
-    /* height: 45px; */
+    width: 88px;
     position: absolute;
     top: 0;
     left: 0;
@@ -366,16 +389,15 @@ export default {
     bottom: 0;
     margin: auto;
   }
-  /* 导航栏  菜单容器 */
   #header .header-nav-m .header-nav-m-menu {
     color: #fff;
-    height: 50px;
-    font-size: 20px;
-    line-height: 50px;
-    background: #474747;
+    height: 48px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 48px;
+    background: linear-gradient(90deg, #0f4c91, #1684d8);
     position: relative;
   }
-  /* 导航栏 菜单图标 */
   #header .header-nav-m .header-nav-m-menu-wrapper {
     position: absolute;
     top: 50%;
@@ -385,32 +407,36 @@ export default {
     height: 40px;
     color: #fff;
     z-index: 999999;
-    font-size: 12px;
+    font-size: 13px;
   }
-  /* 导航栏 */
   #header .header-nav-m .header-nav-m-wrapper {
     position: absolute;
-    top: 50px;
+    top: 48px;
     left: 0;
     width: 100%;
-    background: #474747;
+    padding: 8px 14px 12px;
+    background: rgba(11, 31, 58, 0.98);
+    box-shadow: 0 14px 28px rgba(9, 34, 70, 0.22);
     z-index: 9999999;
   }
-  /* 导航栏 每个导航 */
   #header .header-nav-m .header-nav-m-wrapper > li {
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #ccc;
+    height: 42px;
+    line-height: 42px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
-  /* 导航栏 每个导航下面的 a 链接 */
   #header .header-nav-m .header-nav-m-wrapper > li > a {
     color: #fff;
+    display: block;
     font-size: 15px;
-    font-weight: bold;
-    padding: 15px 0;
+    font-weight: 600;
+    padding: 0;
     position: relative;
   }
-  /* 导航栏 每个导航下面的 a 链接的右侧小三角 */
+  #header .header-nav-m .header-nav-m-wrapper > li.active > a,
+  #header .header-nav-m .header-nav-m-wrapper > li > a:hover {
+    color: #7fd4ff;
+    text-decoration: none;
+  }
   #header .header-nav .header-nav-wrapper > li > a > span {
     font-size: 10px;
   }

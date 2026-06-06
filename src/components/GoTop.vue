@@ -79,20 +79,42 @@ export default {
 
 <style scoped>
 #GoTop {
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   position: fixed;
   right: 20px;
-  bottom: 2px;
+  bottom: 28px;
   z-index: 99999999;
   cursor: pointer;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e73be, #24b7f2);
+  box-shadow: 0 12px 26px rgba(15, 76, 145, 0.28);
+  transition: all 0.25s ease;
+}
+#GoTop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 32px rgba(15, 76, 145, 0.34);
 }
 #GoTop > span {
   display: block;
   width: 100%;
   height: 100%;
-  color: rgb(8, 162, 233);
-  font-size: 30px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 46px;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  #GoTop {
+    width: 40px;
+    height: 40px;
+    right: 14px;
+    bottom: 18px;
+  }
+  #GoTop > span {
+    font-size: 17px;
+    line-height: 40px;
+  }
 }
 </style>
 

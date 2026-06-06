@@ -8,8 +8,12 @@
             <img class="swiper-lazy" :data-src="item.img" alt="轮播图">
             <div class="swiper-lazy-preloader"></div>
             <div class="swiper-slide-title">
+              <div class="hero-copy">
+                <span class="hero-eyebrow">中档信息 · 数字档案综合服务</span>
                 <h1>{{item.title}}</h1>
                 <p>{{item.content}}</p>
+                <button class="hero-action" @click="navToContactPage">获取解决方案</button>
+              </div>
             </div>
           </div>
         </div>
@@ -26,9 +30,10 @@
       <div class="row bigData-container">
         <div class="col-xs-12 col-sm-12 col-md-6 wow zoomIn">
           <!-- <img class="img-responsive" src="@/assets/img/img1.png" alt="WAMS档案综合管理系统"> -->
-          <img class="img-responsive" src="@/assets/img/bg_all_procduct.png" alt="全部产品" style="width: 600px;">
+          <img class="img-responsive product-visual" src="@/assets/img/bg_all_procduct.png" alt="全部产品">
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-6 bigData-copy">
+          <span class="section-eyebrow">核心产品</span>
           <h2 class="bigData-title">
             档案管理系统
             <!-- <small>/ WAMS Management System</small> -->
@@ -36,9 +41,9 @@
           <p>依据最新的《数字档案室建设指南》、《电子文件管理系统建设指南》、《党政机关电子公文归档规范》等标准进行设计研发，产品吻合行业相关标准规范。涵盖收集、管理、保存、利用、设置模块，实现电子文件的全生命周期安全管理，满足立档单位对档案管理的要求，是各立档单位的综合档案管理解决方案。</p>
           <h2 class="bigData-device">主流国产OS、Linux、Windows系统支持</h2>
           <button
-          class="btn btn-lg btn-block btn-info"
-          @click="navToContactPage"
-        >联系我们</button>
+            class="product-action"
+            @click="navToContactPage"
+          >联系我们</button>
         </div>
       </div>
     </div>
@@ -49,9 +54,7 @@
         <h3>7x24小时提供用心的IT服务</h3>
 
         <button
-          class="btn btn-default btn-sm"
-          onmouseleave="this.style.borderColor='#ffffff'; this.style.backgroundColor='#ffffff'; this.style.color='#3f3f3f';"
-          onmouseenter="this.style.backgroundColor='transparent'; this.style.borderColor='#ffffff'; this.style.color='#ffffff';"
+          class="contact-action"
           @click="navToContactPage"
         >联系我们</button>
         <div class="contactUs-contactWay">
@@ -123,16 +126,12 @@
           >
             <div
               class="server-block wow slideInUp"
-              onmouseenter="this.style.color='#28f';this.style.borderColor='#28f'"
-              onmouseleave="this.style.color='#666';this.style.borderColor='#ccc'"
             >
               <img class="center-block" :src="item.logo" alt="logo">
               <p class="text-center">{{item.title}}</p>
               <div
                 class="text-center"
                 v-html="item.content"
-                onmouseenter="this.style.color='#28f'"
-                onmouseleave="this.style.color='#ccc'"
               ></div>
             </div>
           </div>
@@ -319,14 +318,15 @@ export default {
 };
 </script>
 <style scoped>
-/* 整体盒子 */
 #HomePage {
   width: 100%;
+  overflow: hidden;
+  background: #fff;
 }
 
-/* 轮播图 */
 #swiper {
-  height: 600px;
+  height: 620px;
+  background: #071d36;
 }
 #swiper .banner-swiper {
   width: 100%;
@@ -335,6 +335,8 @@ export default {
 #swiper .banner-swiper .swiper-slide img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
 }
 #swiper .banner-swiper .swiper-slide{
   position: relative;
@@ -343,63 +345,194 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999999999;
+  z-index: 20;
   width: 100%;
   height: 100%;
   color: #fff;
-  background: rgba(51, 51, 51, 0.534);
-  text-align: center;
-  line-height: 80px;
+  background:
+    linear-gradient(90deg, rgba(5, 20, 40, 0.88) 0%, rgba(7, 39, 76, 0.72) 46%, rgba(17, 123, 199, 0.24) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42));
+  text-align: left;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
 }
-#swiper .banner-swiper .swiper-slide-title > h1{
-  font-size: 50px;
-  margin-top: 12%;
+#swiper .hero-copy {
+  width: 1170px;
+  max-width: calc(100% - 48px);
+  margin: 0 auto;
+  padding-bottom: 24px;
 }
-#swiper .banner-swiper .swiper-slide-title > p{
-  font-size: 20px;
-  margin-top: 1%;
-  font-weight: 700;
-}
-/* 大数据管理系统 */
-#bigData {
-  padding: 100px;
-  transition: all ease 0.6s;
-  box-sizing: border-box;
-}
-#bigData .bigData-title {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ccc;
-}
-#bigData p {
+#swiper .hero-eyebrow,
+.section-eyebrow {
+  display: inline-block;
+  color: #80d8ff;
   font-size: 14px;
-  color: #333;
-  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 7px 14px;
+  border: 1px solid rgba(128, 216, 255, 0.34);
+  border-radius: 4px;
+  background: rgba(11, 104, 179, 0.18);
 }
-#bigData .bigData-device {
-  margin: 50px 0 20px;
+#swiper .hero-copy h1{
+  font-size: 56px;
+  line-height: 1.15;
+  max-width: 760px;
+  margin: 24px 0 18px;
+  font-weight: 700;
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+#swiper .hero-copy p{
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 400;
+}
+#swiper .hero-action,
+#bigData .product-action,
+#contactUs .contact-action {
+  min-width: 156px;
+  height: 46px;
+  margin-top: 32px;
+  padding: 0 28px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #1e73be, #24b7f2);
+  box-shadow: 0 12px 28px rgba(30, 115, 190, 0.3);
+  transition: all 0.25s ease;
+}
+#swiper .hero-action:hover,
+#bigData .product-action:hover,
+#contactUs .contact-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(30, 115, 190, 0.36);
+}
+#swiper .swiper-pagination-bullet {
+  width: 26px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+}
+#swiper .swiper-pagination-bullet-active {
+  background: #24b7f2;
+}
+#swiper .swiper-button-prev,
+#swiper .swiper-button-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-size: 18px 18px;
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+}
+#swiper .swiper-button-prev:hover,
+#swiper .swiper-button-next:hover {
+  background-color: rgba(36, 183, 242, 0.65);
 }
 
-/* 您身边的IT专家 */
+#bigData {
+  padding: 96px 0;
+  transition: all ease 0.6s;
+  box-sizing: border-box;
+  background:
+    linear-gradient(180deg, #f7fbff 0%, #fff 72%),
+    radial-gradient(circle at 8% 10%, rgba(36, 183, 242, 0.12), transparent 32%);
+}
+#bigData .bigData-container {
+  width: 1170px;
+  max-width: calc(100% - 48px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+#bigData .product-visual {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  filter: drop-shadow(0 22px 36px rgba(15, 76, 145, 0.16));
+}
+#bigData .bigData-copy {
+  padding-left: 42px;
+}
+#bigData .section-eyebrow {
+  color: #1e73be;
+  border-color: rgba(30, 115, 190, 0.18);
+  background: #edf7ff;
+}
+#bigData .bigData-title {
+  color: #13263d;
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 20px 0 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(30, 115, 190, 0.16);
+}
+#bigData p {
+  font-size: 15px;
+  color: #536173;
+  line-height: 2;
+}
+#bigData .bigData-device {
+  color: #0f65b8;
+  font-size: 22px;
+  line-height: 1.4;
+  margin: 34px 0 0;
+}
+#bigData .product-action {
+  margin-top: 26px;
+}
+
 #contactUs {
   color: #fff;
-  height: 400px;
-  background: url("../assets/img/contact_us_bg.jpg") 0 0 no-repeat;
-  background-size: 100% 100%;
+  min-height: 360px;
+  background:
+    linear-gradient(90deg, rgba(5, 20, 40, 0.88), rgba(15, 76, 145, 0.76)),
+    url("../assets/img/contact_us_bg.jpg") center center no-repeat;
+  background-size: cover;
   transition: all ease 0.6s;
+  display: flex;
+  align-items: center;
 }
 #contactUs .contactUs-container {
-  padding-top: 50px;
+  padding-top: 0;
 }
-#contactUs .contactUs-container button {
-  width: 300px;
-  height: 50px;
-  margin-top: 40px;
+#contactUs .contactUs-container h1 {
+  font-size: 40px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+#contactUs .contactUs-container h3 {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+}
+#contactUs .contact-action {
+  color: #0f4c91;
+  background: #fff;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
 }
 #contactUs .contactUs-container .contactUs-contactWay span {
   display: inline-block;
-  width: 48px;
-  height: 48px;
-  margin: 30px;
+  width: 46px;
+  height: 46px;
+  margin: 28px 16px 0;
+  border-radius: 50%;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease;
+}
+#contactUs .contactUs-container .contactUs-contactWay span:hover {
+  transform: translateY(-3px);
 }
 #contactUs .contactUs-container .contactUs-contactWay span:nth-of-type(1) {
   background: url("../assets/img/weixin.png") 0 0 no-repeat;
@@ -414,199 +547,260 @@ export default {
   background-size: 100% 100%;
 }
 
-/* 客户评价 */
 #customer {
-  padding: 50px 0;
+  padding: 76px 0;
   box-sizing: border-box;
-  background: #efefef;
+  background: #f5f8fc;
   transition: all ease 0.6s;
 }
 #customer .customer-title {
-  font-size: 30px;
-  color: rgb(102, 102, 102);
-  margin: 0 0 30px;
+  font-size: 32px;
+  color: #13263d;
+  font-weight: 700;
+  margin: 0 0 36px;
 }
 #customer .customer-block {
   background: #fff;
-  padding: 30px;
+  padding: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(30, 115, 190, 0.08);
+  box-shadow: 0 16px 32px rgba(15, 76, 145, 0.08);
 }
 #customer .customer-logo img {
-  width: 94px;
-  height: 94px;
-  border: 1px solid #ccc;
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  border: 1px solid #e2ebf5;
+  border-radius: 6px;
 }
 #customer .customer-yh img {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
+  opacity: 0.45;
+  margin-top: 12px;
 }
 #customer .customer-content1 {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #0ce9f1;
+  min-height: 56px;
+  color: #536173;
+  line-height: 1.7;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #dceefa;
 }
 #customer .customer-content2 {
-  padding-top: 20px;
+  padding-top: 18px;
+  font-weight: 700;
 }
-/* 为什么选择我们 */
+#customer .customer-content2 a {
+  color: #0f65b8;
+}
+#customer .swiper-button-prev,
+#customer .swiper-button-next {
+  width: 34px;
+  height: 34px;
+  background-size: 15px 15px;
+}
+
 #whyChooseUs {
-  padding: 100px;
+  padding: 92px 0;
+  background: #fff;
 }
 #whyChooseUs .whyChooseUs-title {
   margin-bottom: 50px;
 }
 #whyChooseUs .whyChooseUs-title p:nth-of-type(1) {
-  font-size: 25px;
-  font-weight: 500;
+  color: #13263d;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 #whyChooseUs .whyChooseUs-title p:nth-of-type(2) {
+  color: #7b8da3;
   font-size: 14px;
+  letter-spacing: 0;
+  margin: 0;
+}
+#whyChooseUs .server-wrapper {
+  margin-bottom: 24px;
 }
 #whyChooseUs .server-block {
-  padding: 50px 20px;
-  border: 1px solid #ccc;
-  border-bottom: 5px solid #ccc;
+  min-height: 258px;
+  padding: 42px 22px;
+  color: #536173;
+  border: 1px solid #e2ebf5;
+  border-bottom: 4px solid #d9edfb;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #fff 0%, #f8fbff 100%);
+  box-shadow: 0 16px 34px rgba(15, 76, 145, 0.07);
+  transition: all 0.25s ease;
+}
+#whyChooseUs .server-block:hover {
+  color: #1e73be;
+  border-color: rgba(30, 115, 190, 0.36);
+  border-bottom-color: #24b7f2;
+  transform: translateY(-5px);
+  box-shadow: 0 22px 40px rgba(15, 76, 145, 0.14);
 }
 #whyChooseUs .server-block img {
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
 }
 #whyChooseUs .server-block > p {
+  color: #13263d;
   font-size: 20px;
-  margin: 30px 0;
+  font-weight: 700;
+  margin: 28px 0 16px;
 }
 #whyChooseUs .server-block > div {
-  color: #ccc;
+  color: #6f7f91;
+  line-height: 1.8;
 }
-/* 媒体查询（手机） */
+
 @media screen and (max-width: 768px) {
   #swiper {
-    height: 200px;
+    height: 430px;
+  }
+  #swiper .hero-copy {
+    max-width: calc(100% - 32px);
+  }
+  #swiper .hero-eyebrow {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  #swiper .hero-copy h1 {
+    font-size: 32px;
+    margin: 18px 0 12px;
+  }
+  #swiper .hero-copy p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  #swiper .hero-action {
+    height: 42px;
+    margin-top: 22px;
+    padding: 0 22px;
+  }
+  #swiper .swiper-button-prev,
+  #swiper .swiper-button-next {
+    display: none;
   }
   #bigData {
-    padding: 30px;
+    padding: 54px 0;
+  }
+  #bigData .bigData-container {
+    display: block;
+    max-width: calc(100% - 30px);
+  }
+  #bigData .bigData-copy {
+    padding: 28px 0 0;
   }
   #bigData .bigData-title {
-    font-size: 20px;
+    font-size: 26px;
+    margin: 16px 0 18px;
+  }
+  #bigData p {
+    font-size: 14px;
   }
   #bigData .bigData-device {
-    font-size: 20px;
-    margin: 10px 0 10px;
+    font-size: 18px;
+    margin: 22px 0 0;
   }
   #contactUs {
-    height: 200px;
+    min-height: 280px;
     transition: all ease 0.6s;
   }
-  #contactUs .contactUs-container {
-    padding-top: 0;
-  }
   #contactUs .contactUs-container h1 {
-    font-size: 25px;
+    font-size: 28px;
   }
   #contactUs .contactUs-container h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
-  #contactUs .contactUs-container button {
-    width: 200px;
-    height: 30px;
+  #contactUs .contact-action {
+    min-width: 132px;
+    height: 40px;
     margin-top: 20px;
   }
   #contactUs .contactUs-container .contactUs-contactWay span {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    margin: 10px;
+    width: 34px;
+    height: 34px;
+    margin: 18px 8px 0;
   }
   #customer {
-    padding: 30px 0;
-    box-sizing: border-box;
+    padding: 48px 0;
     background: #fff;
   }
   #customer .customer-title {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 24px;
   }
   #customer .customer-logo img {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
   }
   #customer .customer-block {
-    padding: 30px;
+    padding: 20px;
   }
   #customer .customer-block > div {
-    padding: 30px 0;
+    padding: 18px 0;
   }
   #whyChooseUs {
-    padding: 20px 0;
+    padding: 52px 0 36px;
     transition: all ease 0.6s;
   }
   #whyChooseUs .whyChooseUs-title p:nth-of-type(1) {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 24px;
   }
   #whyChooseUs .whyChooseUs-title p:nth-of-type(2) {
     font-size: 12px;
   }
   #whyChooseUs .server-block {
-    padding: 50px 0;
-    border: 1px solid #ccc;
-    border-bottom: 5px solid #ccc;
-  }
-  #whyChooseUs .server-block img {
-    width: 48px;
-    height: 48px;
-  }
-  #whyChooseUs .server-block > p {
-    font-size: 20px;
-    margin: 30px 0;
-  }
-  #whyChooseUs .server-block > div {
-    color: #ccc;
+    min-height: auto;
+    padding: 34px 18px;
   }
 }
 
-/* 媒体查询（平板） */
 @media screen and (min-width: 768px) and (max-width: 996px) {
   #swiper {
-    height: 400px;
+    height: 520px;
+  }
+  #swiper .hero-copy h1 {
+    font-size: 44px;
   }
   #bigData {
-    padding: 60px;
+    padding: 70px 0;
+  }
+  #bigData .bigData-container {
+    display: block;
+    max-width: calc(100% - 48px);
+  }
+  #bigData .bigData-copy {
+    padding: 34px 0 0;
   }
   #bigData .bigData-title {
     font-size: 30px;
   }
   #bigData .bigData-device {
-    font-size: 30px;
-    margin: 30px 0 15px;
+    font-size: 22px;
+    margin: 28px 0 0;
   }
   #contactUs {
-    height: 300px;
-  }
-  #contactUs .contactUs-container {
-    padding-top: 50px;
+    min-height: 320px;
   }
   #contactUs .contactUs-container h1 {
-    font-size: 30px;
+    font-size: 34px;
   }
   #contactUs .contactUs-container h3 {
     font-size: 20px;
   }
-  #contactUs .contactUs-container button {
-    width: 300px;
-    height: 50px;
-    margin-top: 30px;
-  }
   #contactUs .contactUs-container .contactUs-contactWay span {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
     margin: 15px;
   }
   #customer .customer-title {
-    font-size: 24px;
+    font-size: 28px;
   }
   #whyChooseUs {
-    padding: 20px 0;
+    padding: 64px 0 44px;
   }
 }
 </style>
-
