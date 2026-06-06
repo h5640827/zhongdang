@@ -1,0 +1,76 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import App from './App'
+import ViewUI from 'view-design'
+import VueLazyload from 'vue-lazyload';
+import 'view-design/dist/styles/iview.css'
+
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3, // 预加载高度比例
+  error: '@/assets/img/logo_white_1.png', // 图片加载失败时显示的占位图
+  loading: '@/assets/img/logo_white_1.png', // 图片加载中显示的占位图
+  attempt: 1 // 尝试加载次数
+})
+/* 路由 */
+import router from './router'
+
+/* axios */
+import axios from './api'
+// import api from './api/api'
+Vue.prototype.$http = axios;
+// Vue.prototype.api = api;
+
+Vue.use(ViewUI)
+
+/* swiper */
+import 'swiper/dist/css/swiper.min.css';
+
+/* 重置样式 */
+import './assets/css/reset.min.css'
+
+/* jquery */
+import 'jquery'
+
+/* bootstarp */
+import './assets/css/bootstrap.min.css'
+import './assets/js/bootstrap.min'
+
+/* animate.css */
+import 'animate.css'
+
+ 
+/* 头部组件 */
+import Header from './components/Header'
+Vue.component(Header.name,Header)
+
+
+/* 尾部组件 */
+import Footer from './components/Footer'
+Vue.component(Footer.name,Footer)
+
+/* 回到顶部 */
+import GoTop from './components/GoTop'
+Vue.component(GoTop.name,GoTop)
+
+// 资质照片瀑布流
+import waterfall from './components/waterfall'
+Vue.component(waterfall.name,waterfall)
+
+Vue.config.productionTip = false
+
+
+router.beforeEach((to, from, next) => {
+    if(to.meta.title){
+      document.title = to.meta.title
+    }
+    next();
+});
+
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
