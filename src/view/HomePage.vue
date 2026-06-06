@@ -9,10 +9,9 @@
             <div class="swiper-lazy-preloader"></div>
             <div class="swiper-slide-title">
               <div class="hero-copy">
-                <span class="hero-eyebrow">中档信息 · 数字档案综合服务</span>
                 <h1>{{item.title}}</h1>
                 <p>{{item.content}}</p>
-                <button class="hero-action" @click="navToContactPage">获取解决方案</button>
+                <button class="hero-action" @click="scrollToSection('bigData')">了解产品</button>
               </div>
             </div>
           </div>
@@ -40,10 +39,11 @@
           </h2>
           <p>依据最新的《数字档案室建设指南》、《电子文件管理系统建设指南》、《党政机关电子公文归档规范》等标准进行设计研发，产品吻合行业相关标准规范。涵盖收集、管理、保存、利用、设置模块，实现电子文件的全生命周期安全管理，满足立档单位对档案管理的要求，是各立档单位的综合档案管理解决方案。</p>
           <h2 class="bigData-device">主流国产OS、Linux、Windows系统支持</h2>
-          <button
-            class="product-action"
-            @click="navToContactPage"
-          >联系我们</button>
+          <div class="product-highlights">
+            <span>全生命周期管理</span>
+            <span>标准规范吻合</span>
+            <span>多端系统适配</span>
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
 
         <button
           class="contact-action"
-          @click="navToContactPage"
+          @click="scrollToSection('footer')"
         >联系我们</button>
         <div class="contactUs-contactWay">
           <span></span>
@@ -310,9 +310,15 @@ export default {
     wow.init();
   },
   methods: {
-    /** 前往联系我们页面 */
-    navToContactPage() {
-      this.$router.push({ path: '/contactus' })
+    /** 首页内滚动，避免跨页跳转打断浏览 */
+    scrollToSection(id) {
+      var target = document.getElementById(id);
+      if (!target) return;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({
+        top: top,
+        behavior: 'smooth'
+      });
     }
   }
 };
@@ -363,18 +369,6 @@ export default {
   margin: 0 auto;
   padding-bottom: 24px;
 }
-#swiper .hero-eyebrow,
-.section-eyebrow {
-  display: inline-block;
-  color: #80d8ff;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0;
-  padding: 7px 14px;
-  border: 1px solid rgba(128, 216, 255, 0.34);
-  border-radius: 4px;
-  background: rgba(11, 104, 179, 0.18);
-}
 #swiper .hero-copy h1{
   font-size: 56px;
   line-height: 1.15;
@@ -391,8 +385,6 @@ export default {
   color: rgba(255, 255, 255, 0.86);
   font-weight: 400;
 }
-#swiper .hero-action,
-#bigData .product-action,
 #contactUs .contact-action {
   min-width: 156px;
   height: 46px;
@@ -407,11 +399,40 @@ export default {
   box-shadow: 0 12px 28px rgba(30, 115, 190, 0.3);
   transition: all 0.25s ease;
 }
+#swiper .hero-action {
+  height: 42px;
+  margin-top: 28px;
+  padding: 0 24px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+}
+#swiper .hero-action:after {
+  content: ">";
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
 #swiper .hero-action:hover,
-#bigData .product-action:hover,
 #contactUs .contact-action:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 34px rgba(30, 115, 190, 0.36);
+}
+#swiper .hero-action:hover {
+  color: #0f4c91;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+}
+#swiper .hero-action:hover:after {
+  transform: translateX(3px);
 }
 #swiper .swiper-pagination-bullet {
   width: 26px;
@@ -463,16 +484,29 @@ export default {
   padding-left: 42px;
 }
 #bigData .section-eyebrow {
-  color: #1e73be;
-  border-color: rgba(30, 115, 190, 0.18);
-  background: #edf7ff;
+  color: #0f65b8;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 14px;
+}
+#bigData .section-eyebrow:before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 3px;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #1e73be, #24b7f2);
 }
 #bigData .bigData-title {
   color: #13263d;
   font-size: 36px;
   line-height: 1.25;
   font-weight: 700;
-  margin: 20px 0 24px;
+  margin: 0 0 24px;
   padding-bottom: 18px;
   border-bottom: 1px solid rgba(30, 115, 190, 0.16);
 }
@@ -487,8 +521,31 @@ export default {
   line-height: 1.4;
   margin: 34px 0 0;
 }
-#bigData .product-action {
-  margin-top: 26px;
+#bigData .product-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+#bigData .product-highlights span {
+  color: #31506f;
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  margin: 0 12px 12px 0;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #d9e9f7;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.72);
+}
+#bigData .product-highlights span:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #24b7f2;
 }
 
 #contactUs {
@@ -663,10 +720,6 @@ export default {
   #swiper .hero-copy {
     max-width: calc(100% - 32px);
   }
-  #swiper .hero-eyebrow {
-    font-size: 12px;
-    padding: 5px 10px;
-  }
   #swiper .hero-copy h1 {
     font-size: 32px;
     margin: 18px 0 12px;
@@ -676,9 +729,10 @@ export default {
     line-height: 1.7;
   }
   #swiper .hero-action {
-    height: 42px;
-    margin-top: 22px;
-    padding: 0 22px;
+    height: 40px;
+    margin-top: 20px;
+    padding: 0 20px;
+    font-size: 14px;
   }
   #swiper .swiper-button-prev,
   #swiper .swiper-button-next {

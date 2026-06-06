@@ -78,14 +78,16 @@
       </div>
     </div>
 
-      <div>
+      <div class="footer-bottom">
         <p class="copy">
         <span>邮箱：{{config.email}}</span>
-        <span>&nbsp;&nbsp;热线：0759-2218817&nbsp;0771-2082565&nbsp;0898-36323536</span>
-        <span>&nbsp;&nbsp;投诉电话：15678898817</span>
-        <span>&nbsp;&nbsp;Copyright &copy; 2015 - 2024  中档信息集团有限公司</span>
+        <span>热线：0759-2218817&nbsp;0771-2082565&nbsp;0898-36323536</span>
+        <span>投诉电话：15678898817</span>
         </p>
-        <p><a href="http://beian.miit.gov.cn" target="_blank"  style="color: #fff;">粤ICP备2024272921号-1</a></p>
+        <p class="footer-legal">
+          <span>Copyright &copy; 2015 - 2024 中档信息集团有限公司</span>
+          <a href="http://beian.miit.gov.cn" target="_blank">粤ICP备2024272921号-1</a>
+        </p>
       </div>
 
   </div>
@@ -170,13 +172,35 @@ export default {
   color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
 }
-.copy {
+.footer-bottom {
+  width: 1170px;
+  max-width: calc(100% - 48px);
+  margin: 24px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+.copy,
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   color: rgba(255, 255, 255, 0.72);
   font-size: 12px;
   line-height: 1.8;
-  margin: 26px auto 10px;
-  padding: 0 24px;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.copy {
+  gap: 8px 22px;
+  margin-bottom: 8px;
+}
+.footer-legal {
+  gap: 8px 16px;
+  color: rgba(255, 255, 255, 0.58);
+}
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.72) !important;
 }
 #footer a {
   color: rgba(255, 255, 255, 0.86) !important;
@@ -211,7 +235,17 @@ export default {
     width: 118px;
     height: 118px;
   }
-  .copy span {
+  .footer-bottom {
+    max-width: calc(100% - 30px);
+    margin-top: 20px;
+  }
+  .copy,
+  .footer-legal {
+    display: block;
+  }
+  .copy span,
+  .footer-legal span,
+  .footer-legal a {
     display: block;
     margin-bottom: 4px;
   }
