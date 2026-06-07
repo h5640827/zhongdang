@@ -7,9 +7,6 @@ const title = config.title
 export default new Router({
   routes: [
     {
-      path: '*',
-      redirect: '/'
-    }, {
       path: '/',
       name: 'PageView',
       component: resolve => require(['@/view/PageView'], resolve),
@@ -223,6 +220,10 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
