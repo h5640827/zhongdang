@@ -323,12 +323,17 @@ export default {
     border-radius: 8px;
     background: #fff;
     box-shadow: 0 18px 42px rgba(8, 45, 87, .08);
+    min-height: 680px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     overflow: hidden;
 }
 #right >>> img {
     display: block;
-    width: 100% !important;
+    width: auto !important;
     max-width: 100%;
+    max-height: 680px;
     height: auto;
 }
 @media screen and (max-width: 991px) {
@@ -338,6 +343,14 @@ export default {
     #left {
         padding: 0;
         margin-bottom: 20px;
+    }
+    #right {
+        min-height: 0;
+        display: block;
+    }
+    #right >>> img {
+        width: 100% !important;
+        max-height: none;
     }
 }
 @media screen and (max-width: 768px) {
